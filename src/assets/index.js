@@ -1,0 +1,20 @@
+export { default as WIX } from "./brands/WIX.png";
+export { default as Shopify } from "./brands/Shopify.png";
+export { default as Paypal } from "./brands/Paypal.jpg";
+export { default as Microsoft } from "./brands/Microsoft.jpg";
+export { default as Mailchimp } from "./brands/Mailchimp.jpg";
+export { default as Invision } from "./brands/Invision.svg";
+export { default as Intercom } from "./brands/Intercom.png";
+export { default as Google } from "./brands/Google.png";
+export { default as Evernote } from "./brands/Evernote.png";
+export { default as Disney } from "./brands/Disney.png";
+export { default as INNOVATE_HUB } from "./brands/INNOVATE_HUB.jpg";
+
+export { default as user1 } from "./user/user1.png";
+export { default as user2 } from "./user/user2.png";
+export { default as user3 } from "./user/user3.png";
+export { default as user4 } from "./user/user4.png";
+export { default as user5 } from "./user/user5.png";
+export { default as user6 } from "./user/user6.png";
+export { default as user7 } from "./user/user7.png";
+export { default as user8 } from "./user/user8.png";
