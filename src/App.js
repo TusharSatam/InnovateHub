@@ -4,8 +4,9 @@ import Products from "./Pages/Products/Products";
 import Sidebar from "./components/Sidebar/Sidebar";
 function App() {
   return (
-    <div>
+    <div className="flex p-1 md:p-3 lg:h-screen gap-1 lg:gap-2 lg:w-screen">
       <Sidebar />
+      <div className="flex-1"></div>
       <Routes>
         <Route path="/" element={<Products />} />
       </Routes>
