@@ -24,8 +24,14 @@ const ProductsSlice = createSlice({
           product.tags.some((tag) => tag.toLowerCase().includes(searchText))
       );
     },
+    deleteProducts: (state, action) => {
+      state.filteredProducts = state.filteredProducts.filter((product) => {
+        // Use !action.payload.includes(product.brandName) to filter out products
+        return !action.payload.includes(product.brandName);
+      });
+    },
   },
 });
 
-export const { filterProducts } = ProductsSlice.actions;
+export const { filterProducts, deleteProducts } = ProductsSlice.actions;
 export default ProductsSlice.reducer;

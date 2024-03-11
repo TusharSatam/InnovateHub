@@ -6,7 +6,7 @@ import Input from "../../components/Input/Input";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import { toggleMoboNav } from "../../redux/slice/ToggleNav";
-import { filterProducts } from "../../redux/slice/Products";
+import { deleteProducts, filterProducts } from "../../redux/slice/Products";
 import ProductTable from "./components/ProductTable";
 import FilterOptions from "./components/FilterOptions";
 import { FaTrash, FaArchive } from "react-icons/fa";
@@ -23,7 +23,6 @@ const Products = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   const handleCheckboxChange = (brandName) => {
-    console.log(brandName);
     setSelectedProducts((prevSelected) => {
       if (prevSelected.includes(brandName)) {
         return prevSelected.filter((brand) => brand !== brandName);
@@ -34,16 +33,11 @@ const Products = () => {
   };
 
   const handleDeleteClick = () => {
-    // Implement your delete logic here
-    console.log("Delete selected products: ", selectedProducts);
-    // Clear the selected products after deletion
+    dispatch(deleteProducts(selectedProducts));
     setSelectedProducts([]);
   };
 
   const handleArchiveClick = () => {
-    // Implement your archive logic here
-    console.log("Archive selected products: ", selectedProducts);
-    // Clear the selected products after archiving
     setSelectedProducts([]);
   };
   return (
@@ -93,6 +87,7 @@ const Products = () => {
                 customClass={
                   "text-red-600 border flex px-3 py-1 rounded-lg items-center gap-1 bg-white"
                 }
+                onClick={handleDeleteClick}
               />
               <Button
                 dropicon={<IoMdArrowDropdown />}

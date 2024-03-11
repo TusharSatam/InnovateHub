@@ -1,7 +1,6 @@
 import React from "react";
 
 const Input = ({ placeholder, customClass, onChange, value }) => {
-  console.log(value && value);
   return (
     <input
       value={value && value}

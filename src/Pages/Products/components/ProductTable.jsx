@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { HiOutlineChatAlt2 } from "react-icons/hi";
 import { FaPlus } from "react-icons/fa";
-const ProductTable = ({handleCheckboxChange}) => {
+const ProductTable = ({ handleCheckboxChange }) => {
+  const [checkedItems, setCheckedItems] = useState({});
   const filteredProducts = useSelector(
     (state) => state.ProductsSlice.filteredProducts
   );
+
+  useEffect(() => {
+    // Initialize checkedItems when filteredProducts change
+    const initialCheckedItems = {};
+    filteredProducts.forEach((product) => {
+      initialCheckedItems[product.brandName] = false;
+    });
+    setCheckedItems(initialCheckedItems);
+  }, [filteredProducts]);
+
+  const handleCheckboxToggle = (brandName) => {
+    setCheckedItems((prevCheckedItems) => ({
+      ...prevCheckedItems,
+      [brandName]: !prevCheckedItems[brandName],
+    }));
+    handleCheckboxChange(brandName);
+  };
 
   return (
     <div className="table-container overflow-scroll w-full h-full  text-sm font-medium">
@@ -44,13 +62,16 @@ const ProductTable = ({handleCheckboxChange}) => {
         </thead>
         <tbody className="w-full">
           {filteredProducts?.map((item, index) => (
-            <tr key={index} className="hover:bg-gray-100">
+            <tr key={index}  className={`hover:bg-gray-100 ${
+              checkedItems[item.brandName] ? "bg-gray-100" : ""
+            }`}>
               <td className="border p-2 ">
                 <div className="flex h-full  justify-between items-center">
                   <div className="flex  gap-2 h-full items-center font-semibold">
                     <input
                       type="checkbox"
-                      onChange={() => handleCheckboxChange(item.brandName)}
+                      checked={checkedItems[item.brandName]}
+                      onChange={() => handleCheckboxToggle(item.brandName)}
                       className="border rounded-lg h-[16px] w-[16px]"
                     />
                     <img

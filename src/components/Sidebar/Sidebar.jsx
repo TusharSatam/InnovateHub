@@ -10,7 +10,6 @@ import { IoMdClose } from "react-icons/io";
 const Sidebar = () => {
   const navInfo = useSelector((state) => state.ToggleNavbarSlice);
   const dispatch = useDispatch();
-  console.log(navInfo);
   return (
     <aside
       className={`${

@@ -51,13 +51,18 @@ const Folders = () => {
                 ))}
             </div>
             {folderStates[folder.name] && (
-              <div className="files h-full relative top-[-10px] left-[8px] text-sm border-l-[2px] rounded-b-lg border-gray-200 text-left z-[-1]">
+              <div className="files h-full relative top-[-10px] left-[8px] text-sm border-l-[2px] rounded-b-lg border-gray-200 text-left z-[1]">
                 {folder?.files.map((file, index) => (
                   <div
                     key={index}
                     className="file border-gray-200 border-l-[2px] p-1 relative left-[-2px] rounded-b-lg"
                   >
-                    <Link className="relative top-3 left-2">{file}</Link>
+                    <Link
+                      to={`/not-available/${file}`}
+                      className="relative top-3 left-2 z-50"
+                    >
+                      {file}
+                    </Link>
                   </div>
                 ))}
                 <div
