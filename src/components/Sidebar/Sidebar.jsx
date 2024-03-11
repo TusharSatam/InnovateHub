@@ -7,9 +7,11 @@ import SupportLinks from "./SupportLinks";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMoboNav } from "../../redux/slice/ToggleNav";
 import { IoMdClose } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
   const navInfo = useSelector((state) => state.ToggleNavbarSlice);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <aside
       className={`${
@@ -19,9 +21,12 @@ const Sidebar = () => {
       } lg:flex flex-col w-full md:w-[300px] h-full border-2 md:rounded-lg`}
     >
       <header className="p-2 flex flex-row w-full h-fit justify-between items-center">
-        <div className="flex gap-2 items-center">
+        <div
+          className="flex gap-2 items-center cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           <FaDropbox className="h-[32px] w-[32px] rounded-lg bg-black text-white p-1" />
-          <div className="flex flex-col gap-0">
+          <div className="flex flex-col">
             <h3 className="m-0 p-0 text-[12px] font-normal text-gray-400">
               INC
             </h3>
@@ -34,7 +39,12 @@ const Sidebar = () => {
             alt="user"
             className="h-[24px] w-[24px] rounded-full"
           />
-          {navInfo?.toggleMoboNav && <IoMdClose className="h-[24px] w-[24px]" onClick={()=>dispatch(toggleMoboNav())}/>}
+          {navInfo?.toggleMoboNav && (
+            <IoMdClose
+              className="h-[24px] w-[24px]"
+              onClick={() => dispatch(toggleMoboNav())}
+            />
+          )}
         </div>
       </header>
       <Teams />
