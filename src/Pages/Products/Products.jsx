@@ -65,15 +65,15 @@ const Products = () => {
       <FilterOptions />
       <ProductTable handleCheckboxChange={handleCheckboxChange} />
       {selectedProducts?.length > 0 && (
-        <div className="selected-actions  p-2 flex justify-center items-center absolute z-40 bottom-0 w-full font-normal">
-          <div className="flex items-center border rounded-lg mb-1 p-2 gap-2">
+        <div className="selected-actions  md:p-2 flex justify-center items-center absolute z-40 bottom-0 w-full font-normal ">
+          <div className="flex items-center border rounded-lg mb-1 p-2 gap-2 bg-white flex-wrap lg:flex-nowrap flex-col lg:flex-row  ">
             <div className="">
               <span className="p-1 px-2 rounded-lg bg-black text-white">
                 {selectedProducts.length}
               </span>{" "}
               selected{" "}
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center flex-wrap md:flex-nowrap justify-center">
               <Button
                 icon={<FaArchive />}
                 text={"Archive"}
